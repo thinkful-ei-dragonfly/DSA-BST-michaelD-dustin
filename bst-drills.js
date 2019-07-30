@@ -1,4 +1,5 @@
 const BST = require('./bst');
+const BT = require('./bt');
 
 function tree(t) {
   if (!t) {
@@ -37,7 +38,9 @@ function isThisaBST(tree) {
   if (!tree) {
     throw new Error('empty tree');
   }
-  let BSTtrue = false;
+  
+  let BSTtrue = true;
+
   if ( ((tree.left) && (tree.left.key > tree.key)) || ((tree.right) && (tree.right.key < tree.key)) ) {
     BSTtrue = false;
     return BSTtrue;
@@ -49,7 +52,7 @@ function isThisaBST(tree) {
     BSTtrue = isThisaBST(tree.right);
   }
 
-  return true;
+  return BSTtrue;
 
 }
 
@@ -67,8 +70,20 @@ function main() {
   newBST.insert(0, 0);
   // newBST.insert(5, 5);
   // newBST.insert(7, 7);
-  
+
   console.log(isThisaBST(newBST));
+
+  const newBT = new BT();
+
+  newBT.insert(3, 3); 
+  newBT.insert(1, 1); 
+  newBT.insert(4, 4);
+  newBT.insert(6, 6);
+  newBT.insert(9, 9);
+  newBT.insert(2, 2);
+  newBT.insert(0, 0);
+  
+  console.log(isThisaBST(newBT));
   // console.log(findHeight(newBST));
   // console.log(tree(newBST));
   //console.log(newBST);
