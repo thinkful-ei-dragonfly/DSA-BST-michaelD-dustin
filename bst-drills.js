@@ -38,7 +38,7 @@ function isThisaBST(tree) {
   if (!tree) {
     throw new Error('empty tree');
   }
-  
+
   let BSTtrue = true;
 
   if ( ((tree.left) && (tree.left.key > tree.key)) || ((tree.right) && (tree.right.key < tree.key)) ) {
@@ -51,9 +51,7 @@ function isThisaBST(tree) {
   if (tree.right) {
     BSTtrue = isThisaBST(tree.right);
   }
-
   return BSTtrue;
-
 }
 
 
