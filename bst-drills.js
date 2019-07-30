@@ -33,6 +33,28 @@ function findHeight(BST) {
     
 }
 
+function isThisaBST(tree) {
+  if (!tree) {
+    throw new Error('empty tree');
+  }
+  let BSTtrue = false;
+  if ( ((tree.left) && (tree.left.key > tree.key)) || ((tree.right) && (tree.right.key < tree.key)) ) {
+    BSTtrue = false;
+    return BSTtrue;
+  } 
+  if (tree.left) {
+    BSTtrue = isThisaBST(tree.left);
+  }
+  if (tree.right) {
+    BSTtrue = isThisaBST(tree.right);
+  }
+
+  return true;
+
+}
+
+
+
 function main() {
   const newBST = new BST();
 
@@ -42,11 +64,12 @@ function main() {
   newBST.insert(6, 6);
   newBST.insert(9, 9);
   newBST.insert(2, 2);
-  newBST.insert(0,0);
-  newBST.insert(5, 5);
-  newBST.insert(7, 7);
+  newBST.insert(0, 0);
+  // newBST.insert(5, 5);
+  // newBST.insert(7, 7);
   
-  console.log(findHeight(newBST));
+  console.log(isThisaBST(newBST));
+  // console.log(findHeight(newBST));
   // console.log(tree(newBST));
   //console.log(newBST);
 }
