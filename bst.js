@@ -113,3 +113,5 @@ class BST {
     return this.left._findMin();
   }
 }
+
+module.exports = BST;
