@@ -89,10 +89,20 @@ function isBalanced(tree) {
   return balanced;
 }
 
+//
+let input1 = [3, 5, 4, 6, 1, 0, 2];
+let input2 = [3, 1, 5, 2, 4, 6, 0];
+
+
+
 function isSameTree(arr1, arr2){
   if(arr1[0] !== arr2[0] || arr1.length !== arr2.length){
     return false;
   }
+
+  let highArr = [];
+  let lowArry = [];
+
   
   
 
