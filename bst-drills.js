@@ -32,10 +32,7 @@ function isThisaBST(tree) {
   if (!tree) {
     throw new Error('empty tree');
   }
-<<<<<<< HEAD
 
-=======
->>>>>>> a0516ea905a79573437a3256f9be7d46d1c57ade
   let BSTtrue = true;
   if (
     (tree.left && tree.left.key > tree.key) ||
@@ -55,7 +52,7 @@ function isThisaBST(tree) {
 
 function thirdLargeNode(tree, state) {
   if (tree.right) {
-    console.log(state);
+    //console.log(state);
     thirdLargeNode(tree.right, state);
     if (state.result) {
       return;
@@ -66,26 +63,60 @@ function thirdLargeNode(tree, state) {
     return;
   }
   if (tree.left) {
-    console.log(state);
+    //console.log(state);
     thirdLargeNode(tree.left, state);
   }
+}
+
+function isBalanced(tree) {
+  let balanced = true;
+  let leftHeight = findHeight(tree.left);
+  console.log(leftHeight);
+  let rightHeight = findHeight(tree.right);
+  console.log(rightHeight);
+  if (leftHeight - rightHeight > 1 || rightHeight - leftHeight > 1) {
+    balanced = false;
+    return balanced;
+  }
+  if (tree.left) {
+    console.log('lefttree');
+    balanced = isBalanced(tree.left);
+  }
+  if (tree.right) {
+    console.log('righttree');
+    balanced = isBalanced(tree.right);
+  }
+  return balanced;
+}
+
+function isSameTree(arr1, arr2){
+  if(arr1[0] !== arr2[0] || arr1.length !== arr2.length){
+    return false;
+  }
+  
+  
+
 }
 
 function main() {
   const newBST = new BST();
   const state = {
     num: 3,
-    result: null,
+    result: null
   };
 
   newBST.insert(3, 3); // 0 + findheight(right) + findheight(left)
   newBST.insert(1, 1); // findheight(left) = 1
-  newBST.insert(4, 4);
+  newBST.insert(5, 5);
+  newBST.insert(4,4);
   newBST.insert(6, 6);
   newBST.insert(9, 9);
+  newBST.insert(10,10);
   newBST.insert(2, 2);
   newBST.insert(0, 0);
+  newBST.insert(-1, -1);
 
+  console.log(isBalanced(newBST));
 
   // thirdLargeNode(newBST, state);
   // console.log(state.result);
