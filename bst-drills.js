@@ -1,13 +1,56 @@
 const BST = require('./bst');
 
-const newBST = new BST;
-newBST.insert(3);
-newBST.insert(1);
-newBST.insert(4);
-newBST.insert(6);
-newBST.insert(9);
-newBST.insert(2);
-newBST.insert(5);
-newBST.insert(7);
+function tree(t) {
+  if (!t) {
+    return 0;
+  }
 
-console.log(newBST);
+  return tree(t.left) + t.value + tree(t.right);
+}
+
+function findHeight(BST) {
+
+  if(!BST) {
+    return 0;
+  }
+  else if (BST.left && BST.right) {
+    const right = findHeight(BST.right);
+    const left = findHeight(BST.left);
+    if(left > right){
+      return 1 + left;
+    } else{
+      return 1 + right;
+    }
+  } else if (BST.left && !BST.right){
+
+    return 1 + findHeight(BST.left);
+  } else if (BST.right && !BST.left) {
+
+    return 1 + findHeight(BST.right);
+  } else {
+    return 1;
+  }
+    
+}
+
+function main() {
+  const newBST = new BST();
+
+  newBST.insert(3, 3); // 0 + findheight(right) + findheight(left)
+  newBST.insert(1, 1); // findheight(left) = 1
+  newBST.insert(4, 4);
+  newBST.insert(6, 6);
+  newBST.insert(9, 9);
+  newBST.insert(2, 2);
+  newBST.insert(0,0);
+  newBST.insert(5, 5);
+  newBST.insert(7, 7);
+  
+  console.log(findHeight(newBST));
+  // console.log(tree(newBST));
+  //console.log(newBST);
+}
+
+
+
+main();
