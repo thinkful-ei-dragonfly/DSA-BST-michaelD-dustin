@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
 const BST = require('./bst');
 const BT = require('./bt');
 
@@ -118,12 +120,7 @@ function isSameTree(input1, input2) {
 }
 
 function main() {
-  const newBST = new BST();
-  const state = {
-    num: 3,
-    result: null
-  };
-
+  // STARTS WITH #9
   let input1 = [3, 5, 4, 6, 1, 0, 2];
   let input2 = [3, 1, 5, 2, 4, 6, 0];
   console.log('isSameTree =', isSameTree(input1, input2));
@@ -133,7 +130,8 @@ function main() {
   let input5 = [3, 5, 4, 6, 1, 0, 2, 10, 88, 99, 14, 20, 22];
   let input6 = [3, 1, 5, 2, 4, 6, 0, 10, 88, 99, 14, 22, 20];
   console.log('isSameTree =', isSameTree(input5, input6));
-
+  
+  // const newBST = new BST();
   // fill newBST with values
   // newBST.insert(3, 3); // 0 + findheight(right) + findheight(left)
   // newBST.insert(1, 1); // findheight(left) = 1
@@ -148,6 +146,12 @@ function main() {
   //-----------------------
   // console.log(isBalanced(newBST));
   //-----------------------
+  //
+  // const state = {
+  //   num: 3,
+  //   result: null
+  // };
+  //
   // thirdLargeNode(newBST, state);
   // console.log(state.result);
   //-------------------
@@ -159,6 +163,7 @@ function main() {
   // BINARY TREE - UNBALANCED (see BT.js => pushes all left)
   // const newBT = new BT();
   //
+  // fill newBT with values
   // newBT.insert(3, 3);
   // newBT.insert(1, 1);
   // newBT.insert(4, 4);
