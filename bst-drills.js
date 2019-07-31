@@ -89,23 +89,32 @@ function isBalanced(tree) {
   return balanced;
 }
 
-//
-let input1 = [3, 5, 4, 6, 1, 0, 2];
-let input2 = [3, 1, 5, 2, 4, 6, 0];
+// # 9  ------------ Is Same Tree
 
-
-
-function isSameTree(arr1, arr2){
-  if(arr1[0] !== arr2[0] || arr1.length !== arr2.length){
-    return false;
-  }
-
+function orderArray(arr) {
   let highArr = [];
-  let lowArry = [];
+  let lowArr = [];
 
-  
-  
+  if (arr.length < 2) {
+    return arr;
+  } else {
+    for (let i = 1; i < arr.length; i++) {
+      if (arr[i] < arr[0]) {
+        lowArr.push(arr[i]);
+      } else {
+        highArr.push(arr[i]);
+      }
+    }
+  }
+  return [arr[0], ...orderArray(lowArr), ...orderArray(highArr)];
+}
 
+function isSameTree(input1, input2) {
+  console.log(`ordered 1st array: ${JSON.stringify(orderArray(input1))}\n`);
+  console.log(`ordered 2nd array: ${JSON.stringify(orderArray(input2))}\n`);
+  return (
+    JSON.stringify(orderArray(input1)) === JSON.stringify(orderArray(input2))
+  );
 }
 
 function main() {
@@ -115,19 +124,30 @@ function main() {
     result: null
   };
 
-  newBST.insert(3, 3); // 0 + findheight(right) + findheight(left)
-  newBST.insert(1, 1); // findheight(left) = 1
-  newBST.insert(5, 5);
-  newBST.insert(4,4);
-  newBST.insert(6, 6);
-  newBST.insert(9, 9);
-  newBST.insert(10,10);
-  newBST.insert(2, 2);
-  newBST.insert(0, 0);
-  newBST.insert(-1, -1);
+  let input1 = [3, 5, 4, 6, 1, 0, 2];
+  let input2 = [3, 1, 5, 2, 4, 6, 0];
+  console.log('isSameTree =', isSameTree(input1, input2));
+  let input3 = [3, 5, 4, 6, 1, 0, 2, 10];
+  let input4 = [3, 1, 5, 2, 4, 6, 0, 10];
+  console.log('isSameTree =', isSameTree(input3, input4));
+  let input5 = [3, 5, 4, 6, 1, 0, 2, 10, 88, 99, 14, 20, 22];
+  let input6 = [3, 1, 5, 2, 4, 6, 0, 10, 88, 99, 14, 22, 20];
+  console.log('isSameTree =', isSameTree(input5, input6));
 
-  console.log(isBalanced(newBST));
-
+  // fill newBST with values
+  // newBST.insert(3, 3); // 0 + findheight(right) + findheight(left)
+  // newBST.insert(1, 1); // findheight(left) = 1
+  // newBST.insert(5, 5);
+  // newBST.insert(4,4);
+  // newBST.insert(6, 6);
+  // newBST.insert(9, 9);
+  // newBST.insert(10,10);
+  // newBST.insert(2, 2);
+  // newBST.insert(0, 0);
+  // newBST.insert(-1, -1);
+  //-----------------------
+  // console.log(isBalanced(newBST));
+  //-----------------------
   // thirdLargeNode(newBST, state);
   // console.log(state.result);
   //-------------------
@@ -150,7 +170,7 @@ function main() {
   // console.log(isThisaBST(newBT));
   // console.log(findHeight(newBST));
   // console.log(tree(newBST));
-  //console.log(newBST);
+  // console.log(newBST);
 }
 
 main();
